@@ -1,10 +1,25 @@
 package com.lit.appl.vehicleloan.beans;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="OFFERS")
 public class Offer {
 
+	@Id
+	@Column(name="OFFERID")
 	private int offerId;
+	
+	@Column(name="OFFERAMOUNT")
 	private long offerAmount;
+	
+	@Column(name="OFFERINTEREST")
 	private int offerinterest;
+	
+	@Column(name="OFFERTENURE")
 	private int offerTensure;
 
 	public Offer(int offerId, long offerAmount, int offerinterest, int offerTensure) {

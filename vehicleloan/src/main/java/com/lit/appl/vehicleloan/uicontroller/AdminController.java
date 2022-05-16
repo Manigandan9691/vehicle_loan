@@ -7,22 +7,25 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.lit.appl.vehicleloan.beans.Loan;
-import com.lit.appl.vehicleloan.services.LoanServiceImpl;
+import com.lit.appl.vehicleloan.beans.Admin;
+import com.lit.appl.vehicleloan.services.AdminServiceImpl;
 
 @CrossOrigin(origins="*")
 @RestController
-@RequestMapping("/loan")
-public class LoanController {
-	
+@RequestMapping("/admin")
+public class AdminController {
+
 	@Autowired
-	private LoanServiceImpl loanServ;
+	AdminServiceImpl adminService;
 	
-	//http://localhost:8282/loan/addloan
-	@PostMapping(path="/addloan",produces="application/json",consumes="application/json")
-	public void addLoan(@RequestBody Loan lid)
+	@PostMapping("/addadmin")
+	public void addCust(@RequestBody  Admin aid)
 	{
-		System.out.println(lid);
-		loanServ.addLoan(lid);
+		adminService.addAdmin(aid);
 	}
+/*	public boolean logAdmin(@RequestBody Admin alogin)
+	{
+		System.out.println("login");
+		return true;
+	}*/
 }

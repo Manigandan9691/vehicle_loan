@@ -1,16 +1,46 @@
 package com.lit.appl.vehicleloan.beans;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="VEHICLES")
 public class Vehicle {
 
-	private int vehicleId;
-	private String vehicleMake;
-	private int vehicleModel;
-	private long exPrice;
-	private long onRoadprice;
-	private char vehicleNumber;
+	@Id
+	@Column(name="VEHICLENUMBER",unique=true)
+	private String vehicleNumber;
 	
+	
+	@Column(name="VEHICLEID")
+	private int vehicleId;
+	
+	@Column(name="VEHICLEMAKE")
+	private String vehicleMake;
+	
+	@Column(name="VEHICLEMODEL")
+	private int vehicleModel;
+	
+	@Column(name="EXPRICE")
+	private long exPrice;
+	
+	@Column(name="ONROADPRICE")
+	private long onRoadprice;
+	
+	
+	
+	@OneToOne
+	@JoinColumn(name="CUSTID")
+	private Customer c;
+
 	public Vehicle(int vehicleId, String vehicleMake, int vehicleModel, long exPrice, long onRoadprice,
-			char vehicleNumber) {
+			String vehicleNumber, Customer c) {
 		super();
 		this.vehicleId = vehicleId;
 		this.vehicleMake = vehicleMake;
@@ -18,6 +48,7 @@ public class Vehicle {
 		this.exPrice = exPrice;
 		this.onRoadprice = onRoadprice;
 		this.vehicleNumber = vehicleNumber;
+		this.c = c;
 	}
 
 	public Vehicle() {
@@ -64,21 +95,30 @@ public class Vehicle {
 		this.onRoadprice = onRoadprice;
 	}
 
-	public char getVehicleNumber() {
+	public String getVehicleNumber() {
 		return vehicleNumber;
 	}
 
-	public void setVehicleNumber(char vehicleNumber) {
+	public void setVehicleNumber(String vehicleNumber) {
 		this.vehicleNumber = vehicleNumber;
+	}
+
+	public Customer getC() {
+		return c;
+	}
+
+	public void setC(Customer c) {
+		this.c = c;
 	}
 
 	@Override
 	public String toString() {
 		return "Vehicle [vehicleId=" + vehicleId + ", vehicleMake=" + vehicleMake + ", vehicleModel=" + vehicleModel
-				+ ", exPrice=" + exPrice + ", onRoadprice=" + onRoadprice + ", vehicleNumber=" + vehicleNumber + "]";
+				+ ", exPrice=" + exPrice + ", onRoadprice=" + onRoadprice + ", vehicleNumber=" + vehicleNumber + ", c="
+				+ c + "]";
 	}
 	
 	
-	
+
 	
 }

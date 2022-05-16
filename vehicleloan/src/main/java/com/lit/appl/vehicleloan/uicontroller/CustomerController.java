@@ -1,6 +1,7 @@
 package com.lit.appl.vehicleloan.uicontroller;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +11,10 @@ import com.lit.appl.vehicleloan.beans.Customer;
 import com.lit.appl.vehicleloan.beans.Employment;
 import com.lit.appl.vehicleloan.beans.Loan;
 import com.lit.appl.vehicleloan.beans.Offer;
+import com.lit.appl.vehicleloan.beans.Vehicle;
 import com.lit.appl.vehicleloan.services.CustServiceImpl;
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -23,7 +27,7 @@ public class CustomerController {
 	CustServiceImpl custService;
 	
 	//http://localhost:8282/cust/addcust
-	
+
 	@PostMapping("/addcust")
 	public void addCust(@RequestBody Customer custid)
 	{
@@ -32,13 +36,13 @@ public class CustomerController {
 		
 	}
 	
-/*	
+	
 	//http://localhost:8282/cust/offer
-//	@PostMapping("/offer")
-//	public void selectOfferById(@RequestBody Offer oid)
-//	{
-//		custService.selectOfferByOfferId(oid);
-//	}
+	@PostMapping("/offer")
+	public void selectOfferById(@RequestBody Offer oid)
+	{
+		custService.selectOfferByOfferId(oid);
+	}
 	
 	
 	//http://localhost:8282/cust/employment
@@ -47,11 +51,26 @@ public class CustomerController {
 	{
 		custService.addEmployeementDetails(eid);
 	}
-	
+
 	//http://localhost:8282/cust//loan
 	@PostMapping("/loan")
 	public void applyLoan(@RequestBody Loan lid)
 	{
 		custService.appLoan(lid);
-	} */
+	} 
+
+	@PostMapping(path="/logincustomer" , produces="application/json")
+	public boolean logCust(@RequestBody Customer clogin)
+	{
+		System.out.println("login");
+		return custService.logCust(clogin);
+		
+	}
+	
+	@GetMapping("/customers")
+	public List<Customer> listAllCustomer()
+	{
+		return custService.listAllCustomer();
+	}
+	
 }
