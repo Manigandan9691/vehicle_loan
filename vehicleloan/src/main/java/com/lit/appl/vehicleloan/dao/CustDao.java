@@ -8,18 +8,17 @@ import com.lit.appl.vehicleloan.beans.Loan;
 import com.lit.appl.vehicleloan.beans.Offer;
 import com.lit.appl.vehicleloan.beans.Vehicle;
 
+
 public interface CustDao {
 
 	public void addCust(Customer custid);
 	
-	public void selectOfferByOfferId(Offer oid);
-	
 	public void addEmployeementDetails(Employment eid);
-	
-	public void appLoan(Loan lid);
 	
 	public List<Customer> listAllCustomer();
 	
 	public boolean logCust(Customer clogin);
+	
+	public Customer SearchCustomerById(int id);
 	
 }

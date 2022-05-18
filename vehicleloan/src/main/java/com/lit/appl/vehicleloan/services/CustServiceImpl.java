@@ -33,25 +33,10 @@ public class CustServiceImpl implements CustService {
 	}
 
 	@Override
-	public void selectOfferByOfferId(Offer oid) {
-		dao.selectOfferByOfferId(oid);
-		
-	}
-
-	@Override
 	public void addEmployeementDetails(Employment eid) {
 		dao.addEmployeementDetails(eid);
 		
 	}
-
-	@Override
-	public void appLoan(Loan lid) {
-	
-		dao.appLoan(lid);
-		
-	}
-
-	
 
 	@Override
 	public boolean logCust(Customer clogin) {
@@ -65,6 +50,12 @@ public class CustServiceImpl implements CustService {
 		List<Customer>custList=dao.listAllCustomer();
 		
 		return custList;
+	}
+
+	@Override
+	public Customer SearchCustomerById(int id) {
+		Customer cust=dao.SearchCustomerById(id);
+		return cust;
 	}
 
 	

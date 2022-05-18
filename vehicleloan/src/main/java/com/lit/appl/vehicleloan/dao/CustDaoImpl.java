@@ -16,6 +16,7 @@ import com.lit.appl.vehicleloan.beans.Offer;
 import com.lit.appl.vehicleloan.beans.Vehicle;
 
 
+
 @Repository
 public class CustDaoImpl implements CustDao {
 
@@ -33,30 +34,12 @@ public class CustDaoImpl implements CustDao {
 
 	@Override
 	@Transactional
-	public void selectOfferByOfferId(Offer oid) {
-		
-		em.persist(oid);
-		
-	}
-
-	@Override
-	@Transactional
 	public void addEmployeementDetails(Employment eid) {
 		
 		em.persist(eid);
 		
 	}
-
-	@Override
-	@Transactional
-	public void appLoan(Loan lid) {
-		
-		em.persist(lid);
-		
-	}
-
 	
-
 	@Override
 	public boolean logCust(Customer clogin) {
 		// TODO Auto-generated method stub
@@ -72,7 +55,12 @@ public class CustDaoImpl implements CustDao {
 		
 		return custList;
 	}
-	
+
+	@Override
+	public Customer SearchCustomerById(int id) {
+		Customer cust=em.find(Customer.class,id);
+		return cust;
+	}
 	
 
 }
